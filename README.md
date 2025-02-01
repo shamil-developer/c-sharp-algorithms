@@ -1,2 +1,3 @@
-# c-sharp-algorithms
-Algorithms in C#
+# Алгоритмы на языке C#
+
+### [Бинарный поиск](./BinarySearch)
