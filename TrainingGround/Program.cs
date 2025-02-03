@@ -1,38 +1,44 @@
-Console.WriteLine("Hello");
 
-var randomArray = new int[] { 15, 18, 23, 27, 34, 39, 42, 45, 56, 58, 60, 61, 67, 73, 78, 82, 89, 90, 94, 97 };
+Console.WriteLine("START");
 
-var res = BinarySearch(randomArray, 97);
+var array = new int[] { 1,2,4,6,8,9,15 };
 
-Console.WriteLine(res);
+var index = Algo.BinarySearch(ref array,15);
 
-int BinarySearch(in IReadOnlyCollection<int> input,in int searched)
+Console.WriteLine();
+Console.WriteLine(index);
+Console.WriteLine();
+
+Console.WriteLine("END");
+
+class Algo
 {
-var 
-    var array = input.ToArray();
-    var low = 0;
-    var high = array.Length;
+	public static int BinarySearch(ref int[] array,int searched)
+	{
+		var low = 0;
+		var high = array.Length;
 
-    while(low <= high)
-    {
-        var middle = (low + high) / 2;
-        
-        var guess = array[middle];
+		while(low <= high)
+		{
+			var mid = (low + high) / 2;
+			
+			var guess = array[mid];
 
-        if(guess == searched)
-        {
-            return middle;
-        }
+			if(guess == searched)
+			{
+				return mid;
+			}
 
-        if(guess < searched)
-        {
-            low = middle + 1;
-        }
-        else
-        {
-            high = middle - 1; 
-        }
-    }
+			if(guess < searched)
+			{
+				low = mid + 1;
+			}
+			else
+			{
+				high = mid - 1;
+			}
+		}
 
-    throw new ArgumentException();
+		throw new ArgumentException();
+	}
 }
