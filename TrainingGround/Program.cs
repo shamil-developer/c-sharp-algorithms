@@ -1,9 +1,9 @@
 
 Console.WriteLine("START");
 
-var array = new int[] { 2,3,6,8,9,13,18,45 };
+var array = new int[] { 1,3,4,6,7,8,9 };
 
-var res =Algo.BinarySearch(array,19);
+var res = Algo. BinarySearch(array,9);
 
 Console.WriteLine();
 Console.WriteLine(res);
@@ -13,7 +13,7 @@ Console.WriteLine("END");
 
 class Algo
 {
-	public static int BinarySearch(in int[] array, int input)
+	public static int BinarySearch(int[] array, int searched)
 	{
 		var low = 0;
 		var high = array.Length;
@@ -24,12 +24,12 @@ class Algo
 
 			var guess = array[mid];
 
-			if(guess == input)
+			if(guess == searched)
 			{
 				return mid;
 			}
 
-			if(guess < input)
+			if(guess < searched)
 			{
 				low = mid + 1;
 			}
