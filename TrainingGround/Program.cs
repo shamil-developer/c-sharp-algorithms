@@ -1,43 +1,44 @@
-
 Console.WriteLine("START");
 
-var array = new int[] { 0, 1,3,5,7,8,9 };
+var array = new int[] {5,2,8,1,9,3};
 
- var res= Algo. BinarySearch(array,7);
+ Algo. QuickSort(array);
 
-Console.WriteLine(res);
-Console.WriteLine(string.Join(',',array));
+Console.WriteLine(string.join(',',array));
 Console.WriteLine();
 
 Console.WriteLine("END");
 
 static class Algo
 {
-	public static  int BinarySearch(int[] array, int input)
+	public static void QuickSort(int[] array)
 	{
-		var low = 0;
-		var high = array.Length;
-
-		while(low <=high)
+		QuickSort(array, 0, array.Length - 1); 
+	}
+	private static void QuickSort(int[] array, int leftIndex, int rightIndex)
+	{
+		if(leftIndex < rightIndex) 
 		{
-			var mid = (low + high) / 2;
-			var guess = array[mid];
+			var pivot = Partition(array, leftIndex, rightIndex);
 
-			if(input == guess)
+			QuickSort(array, leftIndex, pivot - 1);
+			QuickSort(array, pivot + 1, rightIndex);
+		}
+	}
+	private static int Partition(int[] array, int leftIndex, int rightIndex)
+	{
+		var pivot = array[rightIndex];
+		var i = leftIndex - 1;
+		for(var j = leftIndex; j < array.Length; j++)
+		{
+			if(array[j] < pivot)
 			{
-				return mid;
-			}
-
-			if(guess < input)
-			{
-				low = mid + 1;
-			}
-			else
-			{
-				high = mid - 1;
+				i++;
+				(array[j], array[i]) = (array[i], array[j]);
 			}
 		}
+		(array[rightIndex], array[i]) = (array[i], array[rightIndex]);
 
-		throw new Exception("2222222222");
+		retrun i + 1;
 	}
 }
